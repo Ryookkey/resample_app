@@ -164,3 +164,56 @@ Processing by HomesController#top as TURBO_STREAM
 Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.4ms)
 
 
+Started GET "/lists/new" for 127.0.0.1 at 2024-11-18 12:27:48 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ListsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 8.3ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 79.4ms | GC: 19.1ms)
+Completed 200 OK in 120ms (Views: 83.5ms | ActiveRecord: 2.9ms (0 queries, 0 cached) | GC: 20.5ms)
+
+
+Started GET "/manifest.json" for 127.0.0.1 at 2024-11-18 12:27:48 +0900
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+  Rendered pwa/manifest.json.erb (Duration: 0.9ms | GC: 0.0ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/lists" for 127.0.0.1 at 2024-11-18 12:27:51 +0900
+Processing by ListsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering lists/index.html.erb within layouts/application
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT "lists".* FROM "lists"[0m
+  ↳ app/views/lists/index.html.erb:3
+  Rendered lists/index.html.erb within layouts/application (Duration: 3.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | GC: 0.5ms)
+Completed 200 OK in 30ms (Views: 10.3ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/manifest.json" for 127.0.0.1 at 2024-11-18 12:27:51 +0900
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+  Rendered pwa/manifest.json.erb (Duration: 0.2ms | GC: 0.0ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/lists" for 127.0.0.1 at 2024-11-18 12:28:38 +0900
+Processing by ListsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering lists/index.html.erb within layouts/application
+  [1m[36mList Load (1.9ms)[0m  [1m[34mSELECT "lists".* FROM "lists"[0m
+  ↳ app/views/lists/index.html.erb:3
+  Rendered lists/index.html.erb within layouts/application (Duration: 8.0ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 22.4ms | GC: 1.7ms)
+Completed 200 OK in 27ms (Views: 22.2ms | ActiveRecord: 2.2ms (1 query, 0 cached) | GC: 2.0ms)
+
+
+Started GET "/manifest.json" for 127.0.0.1 at 2024-11-18 12:28:38 +0900
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+  Rendered pwa/manifest.json.erb (Duration: 0.4ms | GC: 0.0ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+

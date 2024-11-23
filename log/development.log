@@ -636,3 +636,158 @@ Processing by ListsController#edit as HTML
 Completed 200 OK in 9ms (Views: 6.0ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.2ms)
 
 
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateActiveStorageTables (20241123065254)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "service_name" varchar NOT NULL, "byte_size" bigint NOT NULL, "checksum" varchar, "created_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "blob_id" bigint NOT NULL, "variation_digest" varchar NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241123065254') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/lists" for 127.0.0.1 at 2024-11-23 16:00:22 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ListsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering lists/index.html.erb within layouts/application
+  [1m[36mList Load (1.2ms)[0m  [1m[34mSELECT "lists".* FROM "lists"[0m
+  ↳ app/views/lists/index.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "List"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/lists/index.html.erb:10
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "List"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/lists/index.html.erb:10
+  Rendered lists/index.html.erb within layouts/application (Duration: 128.2ms | GC: 20.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 162.2ms | GC: 21.7ms)
+Completed 200 OK in 231ms (Views: 165.1ms | ActiveRecord: 2.8ms (3 queries, 0 cached) | GC: 24.0ms)
+
+
+Started GET "/manifest.json" for 127.0.0.1 at 2024-11-23 16:00:22 +0900
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+  Rendered pwa/manifest.json.erb (Duration: 0.7ms | GC: 0.0ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/list/1" for 127.0.0.1 at 2024-11-23 16:03:05 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/list/1"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2024-11-23 16:03:05 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/lists/1" for 127.0.0.1 at 2024-11-23 16:03:14 +0900
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mList Load (0.9ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/lists_controller.rb:17:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering lists/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "List"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/lists/show.html.erb:8
+  Rendered lists/show.html.erb within layouts/application (Duration: 12.2ms | GC: 0.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 24.4ms | GC: 1.9ms)
+Completed 200 OK in 52ms (Views: 24.8ms | ActiveRecord: 2.9ms (2 queries, 0 cached) | GC: 3.6ms)
+
+
+Started GET "/manifest.json" for 127.0.0.1 at 2024-11-23 16:03:14 +0900
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+  Rendered pwa/manifest.json.erb (Duration: 0.4ms | GC: 0.0ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/lists/new" for 127.0.0.1 at 2024-11-23 16:03:35 +0900
+Processing by ListsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 14.7ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | GC: 0.4ms)
+Completed 200 OK in 18ms (Views: 16.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/manifest.json" for 127.0.0.1 at 2024-11-23 16:03:35 +0900
+Processing by Rails::PwaController#manifest as JSON
+  Rendering pwa/manifest.json.erb
+  Rendered pwa/manifest.json.erb (Duration: 0.2ms | GC: 0.0ms)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.4ms)
+
+
+Started POST "/lists" for 127.0.0.1 at 2024-11-23 16:04:36 +0900
+Processing by ListsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "list"=>{"title"=>"active_storageのテスト", "body"=>"active_storageのテスト", "image"=>#<ActionDispatch::Http::UploadedFile:0x0000000107467000 @tempfile=#<Tempfile:/var/folders/dy/rxgnspz95zq0hzz9726v8mb40000gn/T/RackMultipart20241123-19721-q5yj9q.png>, @content_type="image/png", @original_filename="142_refileDownloadImage.png", @headers="Content-Disposition: form-data; name=\"list[image]\"; filename=\"142_refileDownloadImage.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"投稿"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  [1m[36mList Create (2.4ms)[0m  [1m[32mINSERT INTO "lists" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "active_storageのテスト"], ["body", "active_storageのテスト"], ["created_at", "2024-11-23 07:04:36.906564"], ["updated_at", "2024-11-23 07:04:36.906564"]]
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "List"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "List"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["key", "6v3clvpztjp00yh08tns4jaqslhe"], ["filename", "142_refileDownloadImage.png"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 12302], ["checksum", "PBcUb2h4tdaiKpde00c2NQ=="], ["created_at", "2024-11-23 07:04:36.966803"]]
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "image"], ["record_type", "List"], ["record_id", 3], ["blob_id", 1], ["created_at", "2024-11-23 07:04:36.971736"]]
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  [1m[36mList Update (0.1ms)[0m  [1m[33mUPDATE "lists" SET "updated_at" = ? WHERE "lists"."id" = ?[0m  [["updated_at", "2024-11-23 07:04:36.977592"], ["id", 3]]
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+[36m  Disk Storage (0.8ms) [0m[32mUploaded file to key: 6v3clvpztjp00yh08tns4jaqslhe (checksum: PBcUb2h4tdaiKpde00c2NQ==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: ca1a7be2-5ff2-438b-9a20-11d5ecf425d4) to Async(default) with arguments: #<GlobalID:0x00000001061332e0 @uri=#<URI::GID gid://resample-app/ActiveStorage::Blob/1>>
+[ActiveJob] ↳ app/controllers/lists_controller.rb:8:in `create'
+Redirected to http://127.0.0.1:8080/lists/3
+Completed 302 Found in 168ms (ActiveRecord: 4.3ms (6 queries, 0 cached) | GC: 51.6ms)
+
+
+Started GET "/lists/3" for 127.0.0.1 at 2024-11-23 16:04:37 +0900
+Processing by ListsController#show as TURBO_STREAM
+  Parameters: {"id"=>"3"}
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/lists_controller.rb:17:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering lists/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "List"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/lists/show.html.erb:8
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/lists/show.html.erb:9
+  Rendered lists/show.html.erb within layouts/application (Duration: 9.9ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | GC: 1.5ms)
+Completed 200 OK in 20ms (Views: 16.5ms | ActiveRecord: 0.6ms (3 queries, 0 cached) | GC: 1.5ms)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ca1a7be2-5ff2-438b-9a20-11d5ecf425d4]   [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ca1a7be2-5ff2-438b-9a20-11d5ecf425d4] Performing ActiveStorage::AnalyzeJob (Job ID: ca1a7be2-5ff2-438b-9a20-11d5ecf425d4) from Async(default) enqueued at 2024-11-23T07:04:37.056881000Z with arguments: #<GlobalID:0x000000010688de00 @uri=#<URI::GID gid://resample-app/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ca1a7be2-5ff2-438b-9a20-11d5ecf425d4] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ca1a7be2-5ff2-438b-9a20-11d5ecf425d4]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ca1a7be2-5ff2-438b-9a20-11d5ecf425d4]   [1m[36mActiveStorage::Blob Update (3.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ca1a7be2-5ff2-438b-9a20-11d5ecf425d4]   [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = ?[0m  [["blob_id", 1]]
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MSwicHVyIjoiYmxvYl9pZCJ9fQ==--c6f86159d0222bd6a809d0b73283b18e53bfa123/142_refileDownloadImage.png" for 127.0.0.1 at 2024-11-23 16:04:37 +0900
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ca1a7be2-5ff2-438b-9a20-11d5ecf425d4]   [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."id" = ?[0m  [["id", 3]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ca1a7be2-5ff2-438b-9a20-11d5ecf425d4]   [1m[36mList Update (0.1ms)[0m  [1m[33mUPDATE "lists" SET "updated_at" = ? WHERE "lists"."id" = ?[0m  [["updated_at", "2024-11-23 07:04:37.162732"], ["id", 3]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ca1a7be2-5ff2-438b-9a20-11d5ecf425d4]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ca1a7be2-5ff2-438b-9a20-11d5ecf425d4] Performed ActiveStorage::AnalyzeJob (Job ID: ca1a7be2-5ff2-438b-9a20-11d5ecf425d4) from Async(default) in 57.73ms
+Processing by ActiveStorage::Blobs::RedirectController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MSwicHVyIjoiYmxvYl9pZCJ9fQ==--c6f86159d0222bd6a809d0b73283b18e53bfa123", "filename"=>"142_refileDownloadImage"}
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: 6v3clvpztjp00yh08tns4jaqslhe (http://127.0.0.1:8080/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI2djNjbHZwenRqcDAweWgwOHRuczRqYXFzbGhlIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiMTQyX3JlZmlsZURvd25sb2FkSW1hZ2UucG5nXCI7IGZpbGVuYW1lKj1VVEYtOCcnMTQyX3JlZmlsZURvd25sb2FkSW1hZ2UucG5nIiwiY29udGVudF90eXBlIjoiaW1hZ2UvcG5nIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNC0xMS0yM1QwNzowOTozNy4xOTZaIiwicHVyIjoiYmxvYl9rZXkifX0=--e49cf190a5e1ded802e7687627d91acbc474e8f9/142_refileDownloadImage.png)[0m
+Redirected to http://127.0.0.1:8080/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI2djNjbHZwenRqcDAweWgwOHRuczRqYXFzbGhlIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiMTQyX3JlZmlsZURvd25sb2FkSW1hZ2UucG5nXCI7IGZpbGVuYW1lKj1VVEYtOCcnMTQyX3JlZmlsZURvd25sb2FkSW1hZ2UucG5nIiwiY29udGVudF90eXBlIjoiaW1hZ2UvcG5nIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNC0xMS0yM1QwNzowOTozNy4xOTZaIiwicHVyIjoiYmxvYl9rZXkifX0=--e49cf190a5e1ded802e7687627d91acbc474e8f9/142_refileDownloadImage.png
+Completed 302 Found in 8ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiI2djNjbHZwenRqcDAweWgwOHRuczRqYXFzbGhlIiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiMTQyX3JlZmlsZURvd25sb2FkSW1hZ2UucG5nXCI7IGZpbGVuYW1lKj1VVEYtOCcnMTQyX3JlZmlsZURvd25sb2FkSW1hZ2UucG5nIiwiY29udGVudF90eXBlIjoiaW1hZ2UvcG5nIiwic2VydmljZV9uYW1lIjoibG9jYWwifSwiZXhwIjoiMjAyNC0xMS0yM1QwNzowOTozNy4xOTZaIiwicHVyIjoiYmxvYl9rZXkifX0=--e49cf190a5e1ded802e7687627d91acbc474e8f9/142_refileDownloadImage.png" for 127.0.0.1 at 2024-11-23 16:04:37 +0900
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"142_refileDownloadImage"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+

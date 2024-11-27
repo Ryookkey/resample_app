@@ -2828,3 +2828,562 @@ Processing by ListsController#show as TURBO_STREAM
 Completed 200 OK in 8ms (Views: 5.6ms | ActiveRecord: 0.2ms (2 queries, 0 cached) | GC: 0.2ms)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-11-27 09:16:08.261060', '2024-11-27 09:16:08.261063') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateLists (20241117182156)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "lists" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241117182156') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateActiveStorageTables (20241123065254)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "service_name" varchar NOT NULL, "byte_size" bigint NOT NULL, "checksum" varchar, "created_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "blob_id" bigint NOT NULL, "variation_digest" varchar NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241123065254') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/lists" for ::1 at 2024-11-27 18:21:08 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ListsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering lists/index.html.erb within layouts/application
+  [1m[36mList Load (1.2ms)[0m  [1m[34mSELECT "lists".* FROM "lists"[0m
+  ↳ app/views/lists/index.html.erb:3
+  Rendered lists/index.html.erb within layouts/application (Duration: 3.1ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 72.8ms | GC: 15.3ms)
+Completed 200 OK in 111ms (Views: 75.3ms | ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 16.6ms)
+
+
+Started GET "/new" for ::1 at 2024-11-27 18:21:11 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/new"):
+  
+Started GET "/" for ::1 at 2024-11-27 18:21:22 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/okihararyoutarou/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/railties-7.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/okihararyoutarou/.rbenv/versions/3.1.6/lib/ruby/gems/3.1.0/gems/railties-7.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.0ms | GC: 0.0ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/top" for ::1 at 2024-11-27 18:21:27 +0900
+Processing by HomesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homes/top.html.erb within layouts/application
+  Rendered homes/top.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/manifest.json" for ::1 at 2024-11-27 18:21:27 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/manifest.json"):
+  
+Started GET "/new" for ::1 at 2024-11-27 18:21:47 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/new"):
+  
+Started GET "/lists/new" for ::1 at 2024-11-27 18:22:15 +0900
+Processing by ListsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 20.9ms | GC: 0.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 22.9ms | GC: 1.0ms)
+Completed 200 OK in 32ms (Views: 23.3ms | ActiveRecord: 0.7ms (0 queries, 0 cached) | GC: 1.3ms)
+
+
+Started GET "/manifest.json" for ::1 at 2024-11-27 18:22:15 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/manifest.json"):
+  
+Started POST "/lists" for ::1 at 2024-11-27 18:22:21 +0900
+Processing by ListsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "list"=>{"title"=>"", "body"=>""}, "commit"=>"投稿"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 1.3ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.3ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.6ms (0 queries, 0 cached) | GC: 1.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for nil:NilClass):
+
+Causes:
+NoMethodError (undefined method `errors' for nil:NilClass)
+    1: <h1>新規投稿</h1>
+    2: <% if @list.errors.any? %>
+    3:     <%= @list.errors.count %>件のエラーが発生しました
+    4:     <ul>
+    5:         <% @list.errors.full_messages.each do |message| %>
+  
+app/views/lists/new.html.erb:2
+app/controllers/lists_controller.rb:11:in `create'
+Started GET "/lists/new" for ::1 at 2024-11-27 18:24:00 +0900
+Processing by ListsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 2.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 17.6ms | GC: 1.5ms)
+Completed 200 OK in 34ms (Views: 20.0ms | ActiveRecord: 1.9ms (0 queries, 0 cached) | GC: 2.3ms)
+
+
+Started GET "/manifest.json" for ::1 at 2024-11-27 18:24:00 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/manifest.json"):
+  
+Started POST "/lists" for ::1 at 2024-11-27 18:24:01 +0900
+Processing by ListsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "list"=>{"title"=>"", "body"=>""}, "commit"=>"投稿"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 2.5ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | GC: 0.1ms)
+Completed 200 OK in 17ms (Views: 4.8ms | ActiveRecord: 2.4ms (0 queries, 0 cached) | GC: 1.1ms)
+
+
+Started POST "/lists" for ::1 at 2024-11-27 18:24:03 +0900
+Processing by ListsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "list"=>{"title"=>"", "body"=>""}, "commit"=>"投稿"}
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 3.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | GC: 0.4ms)
+Completed 200 OK in 11ms (Views: 8.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.7ms)
+
+
+Started POST "/lists" for ::1 at 2024-11-27 18:24:04 +0900
+Processing by ListsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "list"=>{"title"=>"", "body"=>""}, "commit"=>"投稿"}
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 3.0ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.1ms | GC: 8.2ms)
+Completed 200 OK in 17ms (Views: 14.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 8.2ms)
+
+
+Started POST "/lists" for ::1 at 2024-11-27 18:24:05 +0900
+Processing by ListsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "list"=>{"title"=>"", "body"=>""}, "commit"=>"投稿"}
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 2.7ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | GC: 0.5ms)
+Completed 200 OK in 8ms (Views: 5.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started POST "/lists" for ::1 at 2024-11-27 18:24:05 +0900
+Processing by ListsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "list"=>{"title"=>"", "body"=>""}, "commit"=>"投稿"}
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 3.6ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | GC: 0.4ms)
+Completed 200 OK in 8ms (Views: 6.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/lists/new" for ::1 at 2024-11-27 18:25:01 +0900
+Processing by ListsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 0.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | GC: 0.2ms)
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/manifest.json" for ::1 at 2024-11-27 18:25:01 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/manifest.json"):
+  
+Started GET "/lists/1" for ::1 at 2024-11-27 18:25:07 +0900
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mList Load (0.3ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/lists_controller.rb:20:in `show'
+Completed 404 Not Found in 13ms (ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.6ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find List with 'id'=1):
+  
+app/controllers/lists_controller.rb:20:in `show'
+Started GET "/manifest.json" for ::1 at 2024-11-27 18:25:11 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/manifest.json"):
+  
+Started GET "/lists/index" for ::1 at 2024-11-27 18:25:19 +0900
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[36mList Load (0.1ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/lists_controller.rb:20:in `show'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find List with 'id'=index):
+  
+app/controllers/lists_controller.rb:20:in `show'
+  [1m[36mList Load (4.7ms)[0m  [1m[34mSELECT "lists".* FROM "lists" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/lists/new" for ::1 at 2024-11-27 18:26:14 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ListsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 10.7ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 78.7ms | GC: 19.3ms)
+Completed 200 OK in 123ms (Views: 82.0ms | ActiveRecord: 2.1ms (0 queries, 0 cached) | GC: 21.2ms)
+
+
+Started GET "/manifest.json" for ::1 at 2024-11-27 18:26:14 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/manifest.json"):
+  
+Started POST "/lists" for ::1 at 2024-11-27 18:26:18 +0900
+Processing by ListsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "list"=>{"title"=>"a", "body"=>"a"}, "commit"=>"投稿"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 2.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | GC: 0.0ms)
+Completed 200 OK in 18ms (Views: 6.2ms | ActiveRecord: 1.5ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/lists" for ::1 at 2024-11-27 18:26:19 +0900
+Processing by ListsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "list"=>{"title"=>"a", "body"=>"a"}, "commit"=>"投稿"}
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 1.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 5.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/lists" for ::1 at 2024-11-27 18:26:20 +0900
+Processing by ListsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "list"=>{"title"=>"a", "body"=>"a"}, "commit"=>"投稿"}
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 2.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 5.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/lists" for ::1 at 2024-11-27 18:26:20 +0900
+Processing by ListsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "list"=>{"title"=>"a", "body"=>"a"}, "commit"=>"投稿"}
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 2.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | GC: 0.0ms)
+Completed 200 OK in 9ms (Views: 5.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/lists" for ::1 at 2024-11-27 18:26:20 +0900
+Processing by ListsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "list"=>{"title"=>"a", "body"=>"a"}, "commit"=>"投稿"}
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 2.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | GC: 0.0ms)
+Completed 200 OK in 9ms (Views: 5.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/lists" for ::1 at 2024-11-27 18:26:33 +0900
+Processing by ListsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "list"=>{"title"=>"a", "body"=>"a", "image"=>#<ActionDispatch::Http::UploadedFile:0x0000000110a566b0 @tempfile=#<Tempfile:/var/folders/dy/rxgnspz95zq0hzz9726v8mb40000gn/T/RackMultipart20241127-28870-lkna07.png>, @content_type="image/png", @original_filename="駐輪場定期.png", @headers="Content-Disposition: form-data; name=\"list[image]\"; filename=\"駐輪場定期.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"投稿"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  [1m[36mList Create (0.3ms)[0m  [1m[32mINSERT INTO "lists" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["title", "a"], ["body", "a"], ["created_at", "2024-11-27 09:26:33.232894"], ["updated_at", "2024-11-27 09:26:33.232894"]]
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "List"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["key", "arolxva71zqy06kbb3p02mkp87sx"], ["filename", "駐輪場定期.png"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 549745], ["checksum", "wpfoFdD/5/xF/zZseZ4Zkg=="], ["created_at", "2024-11-27 09:26:33.243017"]]
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "image"], ["record_type", "List"], ["record_id", 1], ["blob_id", 1], ["created_at", "2024-11-27 09:26:33.245078"]]
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  [1m[36mList Update (0.1ms)[0m  [1m[33mUPDATE "lists" SET "updated_at" = ? WHERE "lists"."id" = ?[0m  [["updated_at", "2024-11-27 09:26:33.247337"], ["id", 1]]
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+[36m  Disk Storage (2.2ms) [0m[32mUploaded file to key: arolxva71zqy06kbb3p02mkp87sx (checksum: wpfoFdD/5/xF/zZseZ4Zkg==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: a4c9a178-ed54-4f4f-879f-761d5394d663) to Async(default) with arguments: #<GlobalID:0x0000000110104918 @uri=#<URI::GID gid://resample-app/ActiveStorage::Blob/1>>
+[ActiveJob] ↳ app/controllers/lists_controller.rb:8:in `create'
+Redirected to http://localhost:3000/lists/1
+Completed 302 Found in 66ms (ActiveRecord: 3.5ms (5 queries, 0 cached) | GC: 8.6ms)
+
+
+Started GET "/lists/1" for ::1 at 2024-11-27 18:26:33 +0900
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4c9a178-ed54-4f4f-879f-761d5394d663]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4c9a178-ed54-4f4f-879f-761d5394d663] Performing ActiveStorage::AnalyzeJob (Job ID: a4c9a178-ed54-4f4f-879f-761d5394d663) from Async(default) enqueued at 2024-11-27T09:26:33.264870000Z with arguments: #<GlobalID:0x000000011022c048 @uri=#<URI::GID gid://resample-app/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4c9a178-ed54-4f4f-879f-761d5394d663] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4c9a178-ed54-4f4f-879f-761d5394d663]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4c9a178-ed54-4f4f-879f-761d5394d663]   [1m[36mActiveStorage::Blob Update (1.9ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4c9a178-ed54-4f4f-879f-761d5394d663]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = ?[0m  [["blob_id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4c9a178-ed54-4f4f-879f-761d5394d663]   [1m[36mList Load (0.1ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."id" = ?[0m  [["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4c9a178-ed54-4f4f-879f-761d5394d663]   [1m[36mList Update (0.1ms)[0m  [1m[33mUPDATE "lists" SET "updated_at" = ? WHERE "lists"."id" = ?[0m  [["updated_at", "2024-11-27 09:26:33.299161"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4c9a178-ed54-4f4f-879f-761d5394d663]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4c9a178-ed54-4f4f-879f-761d5394d663] Performed ActiveStorage::AnalyzeJob (Job ID: a4c9a178-ed54-4f4f-879f-761d5394d663) from Async(default) in 20.95ms
+Processing by ListsController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/lists_controller.rb:20:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering lists/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "List"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/lists/show.html.erb:9
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/lists/show.html.erb:9
+  Rendered lists/show.html.erb within layouts/application (Duration: 6.7ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | GC: 0.5ms)
+Completed 200 OK in 12ms (Views: 8.9ms | ActiveRecord: 0.4ms (3 queries, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MSwicHVyIjoiYmxvYl9pZCJ9fQ==--c6f86159d0222bd6a809d0b73283b18e53bfa123/%E9%A7%90%E8%BC%AA%E5%A0%B4%E5%AE%9A%E6%9C%9F.png" for ::1 at 2024-11-27 18:26:33 +0900
+Processing by ActiveStorage::Blobs::RedirectController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsiZGF0YSI6MSwicHVyIjoiYmxvYl9pZCJ9fQ==--c6f86159d0222bd6a809d0b73283b18e53bfa123", "filename"=>"駐輪場定期"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: arolxva71zqy06kbb3p02mkp87sx (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJhcm9seHZhNzF6cXkwNmtiYjNwMDJta3A4N3N4IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiJTNGJTNGJTNGJTNGJTNGLnBuZ1wiOyBmaWxlbmFtZSo9VVRGLTgnJyVFOSVBNyU5MCVFOCVCQyVBQSVFNSVBMCVCNCVFNSVBRSU5QSVFNiU5QyU5Ri5wbmciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9wbmciLCJzZXJ2aWNlX25hbWUiOiJsb2NhbCJ9LCJleHAiOiIyMDI0LTExLTI3VDA5OjMxOjMzLjM5OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--506726b5b4db59143eefdfe3de4baf368f83782b/%E9%A7%90%E8%BC%AA%E5%A0%B4%E5%AE%9A%E6%9C%9F.png)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJhcm9seHZhNzF6cXkwNmtiYjNwMDJta3A4N3N4IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiJTNGJTNGJTNGJTNGJTNGLnBuZ1wiOyBmaWxlbmFtZSo9VVRGLTgnJyVFOSVBNyU5MCVFOCVCQyVBQSVFNSVBMCVCNCVFNSVBRSU5QSVFNiU5QyU5Ri5wbmciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9wbmciLCJzZXJ2aWNlX25hbWUiOiJsb2NhbCJ9LCJleHAiOiIyMDI0LTExLTI3VDA5OjMxOjMzLjM5OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--506726b5b4db59143eefdfe3de4baf368f83782b/%E9%A7%90%E8%BC%AA%E5%A0%B4%E5%AE%9A%E6%9C%9F.png
+Completed 302 Found in 4ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJhcm9seHZhNzF6cXkwNmtiYjNwMDJta3A4N3N4IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiJTNGJTNGJTNGJTNGJTNGLnBuZ1wiOyBmaWxlbmFtZSo9VVRGLTgnJyVFOSVBNyU5MCVFOCVCQyVBQSVFNSVBMCVCNCVFNSVBRSU5QSVFNiU5QyU5Ri5wbmciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9wbmciLCJzZXJ2aWNlX25hbWUiOiJsb2NhbCJ9LCJleHAiOiIyMDI0LTExLTI3VDA5OjMxOjMzLjM5OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--506726b5b4db59143eefdfe3de4baf368f83782b/%E9%A7%90%E8%BC%AA%E5%A0%B4%E5%AE%9A%E6%9C%9F.png" for ::1 at 2024-11-27 18:26:33 +0900
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"駐輪場定期"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/lists/index" for ::1 at 2024-11-27 18:26:45 +0900
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[36mList Load (0.1ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/lists_controller.rb:20:in `show'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find List with 'id'=index):
+  
+app/controllers/lists_controller.rb:20:in `show'
+Started GET "/lists" for ::1 at 2024-11-27 18:26:50 +0900
+Processing by ListsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering lists/index.html.erb within layouts/application
+  [1m[36mList Load (0.1ms)[0m  [1m[34mSELECT "lists".* FROM "lists"[0m
+  ↳ app/views/lists/index.html.erb:3
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "List"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/lists/index.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/lists/index.html.erb:10
+  Rendered lists/index.html.erb within layouts/application (Duration: 8.2ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | GC: 0.9ms)
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.4ms (3 queries, 0 cached) | GC: 1.1ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJhcm9seHZhNzF6cXkwNmtiYjNwMDJta3A4N3N4IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiJTNGJTNGJTNGJTNGJTNGLnBuZ1wiOyBmaWxlbmFtZSo9VVRGLTgnJyVFOSVBNyU5MCVFOCVCQyVBQSVFNSVBMCVCNCVFNSVBRSU5QSVFNiU5QyU5Ri5wbmciLCJjb250ZW50X3R5cGUiOiJpbWFnZS9wbmciLCJzZXJ2aWNlX25hbWUiOiJsb2NhbCJ9LCJleHAiOiIyMDI0LTExLTI3VDA5OjMxOjMzLjM5OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--506726b5b4db59143eefdfe3de4baf368f83782b/%E9%A7%90%E8%BC%AA%E5%A0%B4%E5%AE%9A%E6%9C%9F.png" for ::1 at 2024-11-27 18:26:50 +0900
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"駐輪場定期"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/manifest.json" for ::1 at 2024-11-27 18:26:50 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/manifest.json"):
+  
+Started GET "/lists/1" for ::1 at 2024-11-27 18:26:53 +0900
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mList Load (0.1ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/lists_controller.rb:20:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering lists/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "List"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/lists/show.html.erb:9
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/lists/show.html.erb:9
+  Rendered lists/show.html.erb within layouts/application (Duration: 7.2ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | GC: 0.5ms)
+Completed 200 OK in 13ms (Views: 10.1ms | ActiveRecord: 0.5ms (3 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/lists/1/edit" for ::1 at 2024-11-27 18:26:58 +0900
+Processing by ListsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mList Load (0.1ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/lists_controller.rb:24:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering lists/edit.html.erb within layouts/application
+  Rendered lists/edit.html.erb within layouts/application (Duration: 2.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | GC: 0.3ms)
+Completed 200 OK in 9ms (Views: 5.7ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.6ms)
+
+
+Started DELETE "/lists/1" for ::1 at 2024-11-27 18:27:01 +0900
+Processing by ListsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mList Load (0.1ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/lists_controller.rb:34:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/lists_controller.rb:35:in `destroy'
+  [1m[36mActiveStorage::Attachment Load (2.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "List"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/lists_controller.rb:35:in `destroy'
+  [1m[36mActiveStorage::Attachment Destroy (0.2ms)[0m  [1m[31mDELETE FROM "active_storage_attachments" WHERE "active_storage_attachments"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/lists_controller.rb:35:in `destroy'
+  [1m[36mList Destroy (0.1ms)[0m  [1m[31mDELETE FROM "lists" WHERE "lists"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/lists_controller.rb:35:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/lists_controller.rb:35:in `destroy'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/lists_controller.rb:35:in `destroy'
+[ActiveJob] Enqueued ActiveStorage::PurgeJob (Job ID: 47efa147-4b66-4fc9-951a-5698169c3059) to Async(default) with arguments: #<GlobalID:0x000000011094e330 @uri=#<URI::GID gid://resample-app/ActiveStorage::Blob/1>>
+[ActiveJob] ↳ app/controllers/lists_controller.rb:35:in `destroy'
+Redirected to http://localhost:3000/lists
+Completed 302 Found in 28ms (ActiveRecord: 3.5ms (5 queries, 0 cached) | GC: 1.2ms)
+
+
+Started GET "/lists" for ::1 at 2024-11-27 18:27:01 +0900
+[ActiveJob] [ActiveStorage::PurgeJob] [47efa147-4b66-4fc9-951a-5698169c3059]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [47efa147-4b66-4fc9-951a-5698169c3059] Performing ActiveStorage::PurgeJob (Job ID: 47efa147-4b66-4fc9-951a-5698169c3059) from Async(default) enqueued at 2024-11-27T09:27:01.320239000Z with arguments: #<GlobalID:0x00000001109654e0 @uri=#<URI::GID gid://resample-app/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::PurgeJob] [47efa147-4b66-4fc9-951a-5698169c3059]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [47efa147-4b66-4fc9-951a-5698169c3059]   [1m[36mActiveStorage::Attachment Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = ? LIMIT ?[0m  [["blob_id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [47efa147-4b66-4fc9-951a-5698169c3059]   [1m[36mActiveStorage::VariantRecord Load (0.1ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ?[0m  [["blob_id", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [47efa147-4b66-4fc9-951a-5698169c3059]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "ActiveStorage::Blob"], ["name", "preview_image"], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [47efa147-4b66-4fc9-951a-5698169c3059]   [1m[36mActiveStorage::Blob Destroy (0.1ms)[0m  [1m[31mDELETE FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ?[0m  [["id", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [47efa147-4b66-4fc9-951a-5698169c3059]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [47efa147-4b66-4fc9-951a-5698169c3059] [36m  Disk Storage (0.2ms) [0m[31mDeleted file from key: arolxva71zqy06kbb3p02mkp87sx[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [47efa147-4b66-4fc9-951a-5698169c3059] [36m  Disk Storage (0.1ms) [0m[31mDeleted files by key prefix: variants/arolxva71zqy06kbb3p02mkp87sx/[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [47efa147-4b66-4fc9-951a-5698169c3059] Performed ActiveStorage::PurgeJob (Job ID: 47efa147-4b66-4fc9-951a-5698169c3059) from Async(default) in 17.31ms
+Processing by ListsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering lists/index.html.erb within layouts/application
+  [1m[36mList Load (0.1ms)[0m  [1m[34mSELECT "lists".* FROM "lists"[0m
+  ↳ app/views/lists/index.html.erb:3
+  Rendered lists/index.html.erb within layouts/application (Duration: 1.1ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | GC: 0.2ms)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/lists/new" for ::1 at 2024-11-27 18:27:07 +0900
+Processing by ListsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 1.1ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | GC: 0.2ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/manifest.json" for ::1 at 2024-11-27 18:27:07 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/manifest.json"):
+  
+Started GET "/lists/new" for ::1 at 2024-11-27 18:30:03 +0900
+Processing by ListsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | GC: 1.5ms)
+Completed 200 OK in 33ms (Views: 17.4ms | ActiveRecord: 1.4ms (0 queries, 0 cached) | GC: 2.3ms)
+
+
+Started GET "/manifest.json" for ::1 at 2024-11-27 18:30:03 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/manifest.json"):
+  
+Started GET "/lists/new" for ::1 at 2024-11-27 18:30:04 +0900
+Processing by ListsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | GC: 0.5ms)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/manifest.json" for ::1 at 2024-11-27 18:30:04 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/manifest.json"):
+  
+Started POST "/lists" for ::1 at 2024-11-27 18:30:05 +0900
+Processing by ListsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "list"=>{"title"=>"", "body"=>""}, "commit"=>"投稿"}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/lists_controller.rb:8:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 5.7ms | GC: 3.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | GC: 3.8ms)
+Completed 200 OK in 17ms (Views: 8.2ms | ActiveRecord: 1.2ms (0 queries, 0 cached) | GC: 4.3ms)
+
+
+Started GET "/lists/new" for ::1 at 2024-11-27 18:35:48 +0900
+Processing by ListsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 1.6ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.7ms | GC: 1.8ms)
+Completed 200 OK in 27ms (Views: 15.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 3.0ms)
+
+
+Started GET "/manifest.json" for ::1 at 2024-11-27 18:35:48 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/manifest.json"):
+  
+Started GET "/lists/new" for ::1 at 2024-11-27 18:35:49 +0900
+Processing by ListsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | GC: 0.2ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/manifest.json" for ::1 at 2024-11-27 18:35:49 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/manifest.json"):
+  
+Started POST "/lists" for ::1 at 2024-11-27 18:35:51 +0900
+Processing by ListsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "list"=>{"title"=>"", "body"=>""}, "commit"=>"投稿"}
+  Rendering layout layouts/application.html.erb
+  Rendering lists/new.html.erb within layouts/application
+  Rendered lists/new.html.erb within layouts/application (Duration: 2.1ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | GC: 0.4ms)
+Completed 200 OK in 11ms (Views: 4.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/manifest.json" for ::1 at 2024-11-27 18:35:51 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/manifest.json"):
+  
